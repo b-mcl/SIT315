@@ -1,0 +1,33 @@
+// C++ code
+//
+int led = 13;
+int motion = 2;
+
+void setup()
+{
+  //Set up pins
+  pinMode(led, OUTPUT);
+  pinMode(motion, INPUT);
+  
+  //Baud rate
+  Serial.begin(9600);
+  Serial.println("SETUP COMPLETE");
+}
+
+void loop()
+{
+  if(digitalRead(motion) == HIGH){//if motion detected, LED on
+  	digitalWrite(led, HIGH);
+    Serial.println("MOTION:");
+    Serial.println(digitalRead(motion));
+    Serial.println("LED:");
+    Serial.println(digitalRead(led));
+  }
+  else{
+  	digitalWrite(led, LOW);//if no motion, LED off
+    Serial.println("MOTION:");
+    Serial.println(digitalRead(motion));
+    Serial.println("LED:");
+    Serial.println(digitalRead(led));
+  }
+}
